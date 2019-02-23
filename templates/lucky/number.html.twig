@@ -1,0 +1,46 @@
+{# templates/lucky/number.html.twig #}
+
+<!doctype html>
+
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+
+  <title>Отображение всех заголовков писем | Тестовое задание №1</title>
+  <meta name="description" content="Тестовое задание №1">
+  <meta name="author" content="Ivan Lebedev">
+
+   <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
+
+</head>
+
+<body>
+<section>
+  <h1>Отображение всех заголовков писем</h1>
+  <div class="tbl-header">
+    <table cellpadding="0" cellspacing="0" border="0">
+      <thead>
+        <tr>
+          <th>Номер</th>
+          <th>Заголовок сообщения</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+  <div class="tbl-content">
+    <table cellpadding="0" cellspacing="0" border="0">
+      <tbody>
+    
+      {% for key, user in subjects %}
+      <tr>
+       <td>{{ key|e }}</td>
+        <td>{{ user|e }}</td>
+         </tr>
+        {% endfor %}
+   
+      </tbody>
+    </table>
+  </div>
+</section>
+</body>
+</html>
