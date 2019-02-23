@@ -1,5 +1,3 @@
-{# templates/lucky/number.html.twig #}
-
 <!doctype html>
 
 <html lang="ru">
@@ -33,7 +31,7 @@
     
       {% for key, user in subjects %}
       <tr>
-       <td>{{ key|e }}</td>
+       <td>{{ (key|e)+1 }}</td>
         <td>{{ user|e }}</td>
          </tr>
         {% endfor %}
@@ -41,6 +39,16 @@
       </tbody>
     </table>
   </div>
+
+  <div class='info_options'>
+<h3>Отображение с {{start}} по {{limit}} из {{count}} сообщений</h3>
+<h4>Страница №{{page}} из {{pageAll}}</h4>
+</div>
+{{ form_start(form) }} 
+{{ form_errors(form) }}
+   {{ form_row(form.number) }} 
+    <input type = "submit" name = "submit" value = "Отправить">   
+{{ form_end(form) }}
 </section>
 </body>
 </html>
