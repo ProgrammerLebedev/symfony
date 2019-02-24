@@ -4,8 +4,8 @@
 <head>
   <meta charset="utf-8">
 
-  <title>Отображение всех заголовков писем | Тестовое задание №1</title>
-  <meta name="description" content="Тестовое задание №1">
+  <title>Отображение всех ссылок на картинки со страницы | Тестовое задание №2</title>
+  <meta name="description" content="Тестовое задание №2">
   <meta name="author" content="Ivan Lebedev">
 
    <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
@@ -14,13 +14,13 @@
 
 <body>
 <section>
-  <h1>Отображение всех заголовков писем</h1>
+  <h1>Ссылки на картинки со страницы {{url}}</h1>
   <div class="tbl-header">
     <table cellpadding="0" cellspacing="0" border="0">
       <thead>
         <tr>
           <th>Номер</th>
-          <th>Заголовок сообщения</th>
+          <th>URL</th>
         </tr>
       </thead>
     </table>
@@ -28,26 +28,22 @@
   <div class="tbl-content">
     <table cellpadding="0" cellspacing="0" border="0">
       <tbody>
-    
-      {% for key, subject in subjects %}
+    {% for key, url in allImages %}
       <tr>
        <td>{{ (key|e)+1 }}</td>
-        <td>{{ subject|e }}</td>
+        <td>{{ url|e }}</td>
          </tr>
         {% endfor %}
-   
       </tbody>
     </table>
   </div>
-
   <div class='info_options'>
-<h3>Отображение с {{start}} по {{limit}} из {{count}} сообщений</h3>
-<h4>Страница №{{page}} из {{pageAll}}</h4>
+<h3>Всего найдено {{allImages|length}} изображений</h3>
 </div>
 {{ form_start(form) }} 
 {{ form_errors(form) }}
-   {{ form_row(form.number) }} 
-    <input type = "submit" name = "submit" value = "Отправить">   
+   {{ form_row(form.url) }} {{ form_row(form.script) }} 
+    <input type = "submit" name = "submit" value = "Найти ссылки на изображения">   
 {{ form_end(form) }}
 </section>
 </body>

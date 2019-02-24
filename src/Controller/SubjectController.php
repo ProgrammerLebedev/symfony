@@ -21,7 +21,7 @@ class SubjectController extends Controller
         $stream = imap_open('{imap.mail.ru:993/imap/ssl}INBOX', 'seotest@bk.ru', '1825dec14') or die("Не удалось подключиться: " . imap_last_error());
         $count_emails = imap_num_msg($stream);
         $pageAll = ceil($count_emails/$per_page);
-        if($page>$pageAll || !is_numeric($page) || !$page){
+        if($page>$pageAll || !is_numeric($page) || !$page || $page < 1){
             $result = array(
                 '0' => 'Введена неккоректная страница'
             );
